@@ -278,9 +278,9 @@
                 <div class="user-avatar">
                     <i class="bi bi-person-circle"></i>
                 </div>
-                <div>
+                    <div>
                     <div class="user-name">{{ current_user.nome }}</div>
-                    <small style="color: rgba(255,255,255,0.7); font-size: 0.75rem;">{{ current_user.cargo|capitalize }}</small>
+                    <small class="text-white-70 small">{{ current_user.cargo|capitalize }}</small>
                 </div>
             </div>
             <a href="{{ url_for('logout') }}" class="btn btn-logout">
@@ -335,6 +335,21 @@
                 if (window.innerWidth <= 992) {
                     document.getElementById('sidebar').classList.remove('show');
                 }
+            });
+        });
+    </script>
+    <script>
+        // Global progress-bar data-percent initializer and animation
+        document.addEventListener('DOMContentLoaded', function() {
+            const bars = document.querySelectorAll('.progress-bar[data-percent]');
+            bars.forEach(bar => {
+                const raw = bar.getAttribute('data-percent') || '0';
+                const pct = parseFloat(raw) || 0;
+                const visual = Math.min(pct, 100);
+                bar.setAttribute('aria-valuenow', String(pct));
+                // start from 0 for smooth animation
+                bar.style.width = '0%';
+                setTimeout(() => { bar.style.width = visual + '%'; }, 80);
             });
         });
     </script>

@@ -12,7 +12,7 @@
         <a href="{{ url_for('exportar_pdf_dashboard') }}" class="btn btn-danger">
             <i class="bi bi-file-earmark-pdf"></i> Exportar PDF
         </a>
-        <div class="badge bg-primary" style="font-size: 1rem; padding: 0.5rem 1rem;">
+        <div class="badge bg-primary badge-lg">
             <i class="bi bi-calendar3"></i> {{ resumo_global.mes }}/{{ resumo_global.ano }}
         </div>
     </div>
@@ -22,15 +22,15 @@
 <div class="row g-4 mb-5">
     <!-- Card Total de Vendedores -->
     <div class="col-lg-3 col-md-6">
-        <div class="card stats-card border-0 shadow-sm hover-lift" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); overflow: hidden;">
+        <div class="card stats-card border-0 shadow-sm hover-lift bg-gradient-purple overflow-hidden">
             <div class="card-body p-4 position-relative">
                 <div class="d-flex justify-content-between align-items-start mb-3">
                     <div>
-                        <h6 class="text-white-50 mb-2 fw-normal" style="font-size: 0.875rem;">Total de Vendedores</h6>
-                        <h2 class="text-white fw-bold mb-0" style="font-size: 2.5rem;">{{ resumo_global.total_vendedores }}</h2>
+                        <h6 class="text-white-50 mb-2 fw-normal small">Total de Vendedores</h6>
+                        <h2 class="text-white fw-bold mb-0 stats-value-lg">{{ resumo_global.total_vendedores }}</h2>
                     </div>
-                    <div class="icon-box" style="background: rgba(255,255,255,0.2); width: 56px; height: 56px; border-radius: 12px; display: flex; align-items: center; justify-content: center;">
-                        <i class="bi bi-people-fill text-white" style="font-size: 1.75rem;"></i>
+                    <div class="icon-box icon-box-small">
+                        <i class="bi bi-people-fill text-white icon-lg"></i>
                     </div>
                 </div>
                 <div class="d-flex align-items-center text-white-50">
@@ -43,15 +43,15 @@
     
     <!-- Card Receita Total -->
     <div class="col-lg-3 col-md-6">
-        <div class="card stats-card border-0 shadow-sm hover-lift" style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%); overflow: hidden;">
+        <div class="card stats-card border-0 shadow-sm hover-lift bg-gradient-pink overflow-hidden">
             <div class="card-body p-4 position-relative">
                 <div class="d-flex justify-content-between align-items-start mb-3">
                     <div>
-                        <h6 class="text-white-50 mb-2 fw-normal" style="font-size: 0.875rem;">Receita Total</h6>
-                        <h2 class="text-white fw-bold mb-0" style="font-size: 2rem;">{{ resumo_global.total_receita_formatada }}</h2>
+                        <h6 class="text-white-50 mb-2 fw-normal small">Receita Total</h6>
+                        <h2 class="text-white fw-bold mb-0 stats-value-md">{{ resumo_global.total_receita_formatada }}</h2>
                     </div>
-                    <div class="icon-box" style="background: rgba(255,255,255,0.2); width: 56px; height: 56px; border-radius: 12px; display: flex; align-items: center; justify-content: center;">
-                        <i class="bi bi-cash-stack text-white" style="font-size: 1.75rem;"></i>
+                    <div class="icon-box icon-box-small">
+                        <i class="bi bi-cash-stack text-white icon-lg"></i>
                     </div>
                 </div>
                 <div class="d-flex align-items-center text-white-50">
@@ -64,15 +64,15 @@
     
     <!-- Card Meta Total -->
     <div class="col-lg-3 col-md-6">
-        <div class="card stats-card border-0 shadow-sm hover-lift" style="background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%); overflow: hidden;">
+        <div class="card stats-card border-0 shadow-sm hover-lift bg-gradient-cyan overflow-hidden">
             <div class="card-body p-4 position-relative">
                 <div class="d-flex justify-content-between align-items-start mb-3">
                     <div>
-                        <h6 class="text-white-50 mb-2 fw-normal" style="font-size: 0.875rem;">Meta Total</h6>
-                        <h2 class="text-white fw-bold mb-0" style="font-size: 2rem;">{{ resumo_global.total_meta_formatada }}</h2>
+                        <h6 class="text-white-50 mb-2 fw-normal small">Meta Total</h6>
+                        <h2 class="text-white fw-bold mb-0 stats-value-md">{{ resumo_global.total_meta_formatada }}</h2>
                     </div>
-                    <div class="icon-box" style="background: rgba(255,255,255,0.2); width: 56px; height: 56px; border-radius: 12px; display: flex; align-items: center; justify-content: center;">
-                        <i class="bi bi-bullseye text-white" style="font-size: 1.75rem;"></i>
+                    <div class="icon-box icon-box-small">
+                        <i class="bi bi-bullseye text-white icon-lg"></i>
                     </div>
                 </div>
                 <div class="d-flex align-items-center text-white-50">
@@ -85,15 +85,15 @@
     
     <!-- Card Comissão Total -->
     <div class="col-lg-3 col-md-6">
-        <div class="card stats-card border-0 shadow-sm hover-lift" style="background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%); overflow: hidden;">
+        <div class="card stats-card border-0 shadow-sm hover-lift bg-gradient-green overflow-hidden">
             <div class="card-body p-4 position-relative">
                 <div class="d-flex justify-content-between align-items-start mb-3">
                     <div>
-                        <h6 class="text-white-50 mb-2 fw-normal" style="font-size: 0.875rem;">Comissão Total</h6>
-                        <h2 class="text-white fw-bold mb-0" style="font-size: 2rem;">{{ resumo_global.total_comissao_formatada }}</h2>
+                        <h6 class="text-white-50 mb-2 fw-normal small">Comissão Total</h6>
+                        <h2 class="text-white fw-bold mb-0 stats-value-md">{{ resumo_global.total_comissao_formatada }}</h2>
                     </div>
-                    <div class="icon-box" style="background: rgba(255,255,255,0.2); width: 56px; height: 56px; border-radius: 12px; display: flex; align-items: center; justify-content: center;">
-                        <i class="bi bi-wallet2 text-white" style="font-size: 1.75rem;"></i>
+                    <div class="icon-box icon-box-small">
+                        <i class="bi bi-wallet2 text-white icon-lg"></i>
                     </div>
                 </div>
                 <div class="d-flex align-items-center text-white-50">
@@ -125,17 +125,17 @@
 </style>
 
 <!-- Card Alcance da Equipe -->
-<div class="card mb-5" style="border: none; box-shadow: 0 4px 6px rgba(0,0,0,0.1);">
+<div class="card mb-5 border-0 shadow-sm">
     <div class="card-body">
         <h5 class="mb-3"><i class="bi bi-graph-up-arrow"></i> Alcance Geral da Equipe</h5>
-        <div class="progress" style="height: 40px; border-radius: 10px;">
-            <div class="progress-bar progress-bar-striped progress-bar-animated {% if resumo_global.alcance_equipe >= 125 %}bg-success{% elif resumo_global.alcance_equipe >= 100 %}bg-info{% elif resumo_global.alcance_equipe >= 75 %}bg-warning{% else %}bg-danger{% endif %}" 
-                 role="progressbar" 
-                 style="width: {% if resumo_global.alcance_equipe > 150 %}100{% else %}{{ resumo_global.alcance_equipe }}{% endif %}%; font-size: 1.2rem; font-weight: 600;" 
-                 aria-valuenow="{{ resumo_global.alcance_equipe }}" 
-                 aria-valuemin="0" 
-                 aria-valuemax="150">
-                {{ "%.2f"|format(resumo_global.alcance_equipe) }}%
+        <div class="progress progress-lg">
+              <div class="progress-bar progress-bar-striped progress-bar-animated {% if resumo_global.alcance_equipe >= 125 %}bg-success{% elif resumo_global.alcance_equipe >= 100 %}bg-info{% elif resumo_global.alcance_equipe >= 75 %}bg-warning{% else %}bg-danger{% endif %}" 
+                  role="progressbar" 
+                  data-percent="{{ resumo_global.alcance_equipe }}"
+                  aria-valuenow="{{ resumo_global.alcance_equipe }}" 
+                  aria-valuemin="0" 
+                  aria-valuemax="150">
+                <span class="progress-bar-lg-text">{{ "%.2f"|format(resumo_global.alcance_equipe) }}%</span>
             </div>
         </div>
         <small class="text-muted mt-2 d-block">
@@ -147,7 +147,7 @@
 <!-- Ranking de Vendedores -->
 <div class="card ranking-card">
     <div class="card-header">
-        <h4 class="mb-0"><i class="bi bi-trophy-fill" style="color: #ffc107;"></i> Ranking de Vendedores</h4>
+        <h4 class="mb-0"><i class="bi bi-trophy-fill text-warning"></i> Ranking de Vendedores</h4>
     </div>
     <div class="card-body p-0">
         {% if vendedores %}
@@ -155,11 +155,11 @@
             <table class="table table-hover mb-0">
                 <thead>
                     <tr>
-                        <th style="width: 60px;" class="text-center">#</th>
+                        <th class="w-60px text-center">#</th>
                         <th>Vendedor</th>
                         <th class="text-end">Receita</th>
                         <th class="text-end">Meta</th>
-                        <th style="min-width: 220px;">Alcance</th>
+                        <th class="minw-220px">Alcance</th>
                         <th class="text-end">Comissão</th>
                         <th class="text-center d-none d-md-table-cell">Status</th>
                     </tr>
@@ -187,11 +187,11 @@
                             <span>{{ "R$ {:,.2f}".format(vendedor.meta).replace(",", "X").replace(".", ",").replace("X", ".") }}</span>
                         </td>
                         <td>
-                            <div class="progress" style="height: 25px;">
+                            <div class="progress">
                                 <div 
                                     class="progress-bar progress-bar-animated {% if vendedor.percentual_alcance >= 125 %}bg-success{% elif vendedor.percentual_alcance >= 100 %}bg-info{% elif vendedor.percentual_alcance >= 75 %}bg-warning{% else %}bg-danger{% endif %}" 
                                     role="progressbar" 
-                                    style="width: {% if vendedor.percentual_alcance > 150 %}100{% else %}{{ '%.2f'|format(vendedor.percentual_alcance) }}{% endif %}%;" 
+                                    data-percent="{{ vendedor.percentual_alcance }}"
                                     aria-valuenow="{{ vendedor.percentual_alcance }}" 
                                     aria-valuemin="0" 
                                     aria-valuemax="150">
@@ -223,7 +223,7 @@
         </div>
         {% else %}
         <div class="text-center py-5">
-            <i class="bi bi-inbox" style="font-size: 4rem; color: #dee2e6;"></i>
+            <i class="bi bi-inbox icon-xxl text-muted"></i>
             <p class="text-muted mt-3">Nenhum vendedor com metas cadastradas neste período.</p>
             <a href="{{ url_for('nova_meta') }}" class="btn btn-primary mt-2">
                 <i class="bi bi-plus-circle"></i> Criar Primeira Meta
@@ -240,31 +240,31 @@
         <div class="row g-3">
             <div class="col-md-6 col-lg-4">
                 <div class="d-flex align-items-center">
-                    <div class="progress-bar bg-danger" style="width: 40px; height: 25px; border-radius: 5px; margin-right: 12px;"></div>
+                    <div class="legend-square bg-danger"></div>
                     <span><strong>0% - 50%:</strong> 1% de comissão</span>
                 </div>
             </div>
             <div class="col-md-6 col-lg-4">
                 <div class="d-flex align-items-center">
-                    <div class="progress-bar bg-warning" style="width: 40px; height: 25px; border-radius: 5px; margin-right: 12px;"></div>
+                    <div class="legend-square bg-warning"></div>
                     <span><strong>51% - 75%:</strong> 2% de comissão</span>
                 </div>
             </div>
             <div class="col-md-6 col-lg-4">
                 <div class="d-flex align-items-center">
-                    <div class="progress-bar bg-info" style="width: 40px; height: 25px; border-radius: 5px; margin-right: 12px;"></div>
+                    <div class="legend-square bg-info"></div>
                     <span><strong>76% - 100%:</strong> 3% de comissão</span>
                 </div>
             </div>
             <div class="col-md-6 col-lg-4">
                 <div class="d-flex align-items-center">
-                    <div class="progress-bar" style="background: linear-gradient(90deg, #43e97b 0%, #38f9d7 100%); width: 40px; height: 25px; border-radius: 5px; margin-right: 12px;"></div>
+                    <div class="legend-square bg-gradient-green"></div>
                     <span><strong>101% - 125%:</strong> 4% de comissão</span>
                 </div>
             </div>
             <div class="col-md-6 col-lg-4">
                 <div class="d-flex align-items-center">
-                    <div class="progress-bar bg-success" style="width: 40px; height: 25px; border-radius: 5px; margin-right: 12px;"></div>
+                    <div class="legend-square bg-success"></div>
                     <span><strong>Acima de 125%:</strong> 5% de comissão</span>
                 </div>
             </div>
@@ -274,8 +274,6 @@
         </div>
     </div>
 </div>
-
-{% block extra_js %}
 <script>
 // Anima as barras de progresso ao carregar a página
 document.addEventListener('DOMContentLoaded', function() {
@@ -290,199 +288,3 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 </script>
 {% endblock %}
-{% endblock %}
-                <!-- Card Receita Total -->
-                <div class="col-lg-3 col-md-6">
-                    <div class="card stats-card card-receita">
-                        <div class="card-body text-center">
-                            <i class="bi bi-cash-stack stats-icon"></i>
-                            <h5 class="stats-title">Receita Total</h5>
-                            <p class="stats-value">{{ resumo_global.total_receita_formatada }}</p>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Card Meta Total -->
-                <div class="col-lg-3 col-md-6">
-                    <div class="card stats-card card-meta">
-                        <div class="card-body text-center">
-                            <i class="bi bi-bullseye stats-icon"></i>
-                            <h5 class="stats-title">Meta Total</h5>
-                            <p class="stats-value">{{ resumo_global.total_meta_formatada }}</p>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Card Alcance da Equipe -->
-                <div class="col-lg-3 col-md-6">
-                    <div class="card stats-card card-alcance">
-                        <div class="card-body text-center">
-                            <i class="bi bi-percent stats-icon"></i>
-                            <h5 class="stats-title">Alcance da Equipe</h5>
-                            <p class="stats-value">{{ "%.2f"|format(resumo_global.alcance_equipe) }}%</p>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Card Comissão Total -->
-                <div class="col-lg-3 col-md-6">
-                    <div class="card stats-card card-comissao">
-                        <div class="card-body text-center">
-                            <i class="bi bi-wallet2 stats-icon"></i>
-                            <h5 class="stats-title">Comissão Total</h5>
-                            <p class="stats-value">{{ resumo_global.total_comissao_formatada }}</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- Tabela de Ranking -->
-            <div class="card ranking-card">
-                <div class="card-header">
-                    <h4><i class="bi bi-award-fill"></i> Ranking de Vendedores</h4>
-                </div>
-                <div class="card-body p-0">
-                    <div class="table-responsive-custom">
-                        <table class="table table-hover">
-                            <thead>
-                                <tr>
-                                    <th style="width: 60px;">#</th>
-                                    <th>Vendedor</th>
-                                    <th class="text-end">Receita</th>
-                                    <th class="text-end">Meta</th>
-                                    <th style="min-width: 200px;">Alcance</th>
-                                    <th class="text-end">Comissão</th>
-                                    <th class="text-center d-none d-md-table-cell">Status</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                {% for vendedor in vendedores %}
-                                <tr>
-                                    <td>
-                                        <span class="rank-badge {% if loop.index == 1 %}rank-1{% elif loop.index == 2 %}rank-2{% elif loop.index == 3 %}rank-3{% else %}rank-other{% endif %}">
-                                            {{ loop.index }}
-                                        </span>
-                                    </td>
-                                    <td>
-                                        <div class="vendedor-info">
-                                            <span class="vendedor-nome">{{ vendedor.nome }}</span>
-                                            <span class="vendedor-supervisor">
-                                                <i class="bi bi-person-badge"></i> {{ vendedor.supervisor }}
-                                            </span>
-                                        </div>
-                                    </td>
-                                    <td class="text-end">
-                                        <span class="valor-destaque">{{ "R$ {:,.2f}".format(vendedor.receita_alcancada).replace(",", "X").replace(".", ",").replace("X", ".") }}</span>
-                                    </td>
-                                    <td class="text-end">
-                                        <span>{{ "R$ {:,.2f}".format(vendedor.meta).replace(",", "X").replace(".", ",").replace("X", ".") }}</span>
-                                    </td>
-                                    <td>
-                                        <div class="progress">
-                                            <div 
-                                                class="progress-bar progress-bar-animated {% if vendedor.percentual_alcance >= 125 %}bg-success{% elif vendedor.percentual_alcance >= 100 %}bg-info{% elif vendedor.percentual_alcance >= 75 %}bg-warning{% else %}bg-danger{% endif %}" 
-                                                role="progressbar" 
-                                                style="width: {% if vendedor.percentual_alcance > 150 %}100{% else %}{{ '%.2f'|format(vendedor.percentual_alcance) }}{% endif %}%; max-width: 100%;" 
-                                                aria-valuenow="{{ vendedor.percentual_alcance }}" 
-                                                aria-valuemin="0" 
-                                                aria-valuemax="150"
-                                            >
-                                                {{ vendedor.percentual_alcance_formatado }}
-                                            </div>
-                                        </div>
-                                    </td>
-                                    <td class="text-end">
-                                        <span class="valor-destaque text-success">
-                                            {{ vendedor.comissao_total_formatada }}
-                                        </span>
-                                    </td>
-                                    <td class="text-center d-none d-md-table-cell">
-                                        <span class="badge badge-status {% if vendedor.status_comissao == 'Pago' %}bg-secondary{% else %}bg-primary{% endif %}">
-                                            {% if vendedor.status_comissao == 'Pago' %}
-                                                <i class="bi bi-check-circle"></i>
-                                            {% else %}
-                                                <i class="bi bi-clock"></i>
-                                            {% endif %}
-                                            {{ vendedor.status_comissao }}
-                                        </span>
-                                    </td>
-                                </tr>
-                                {% endfor %}
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Legenda das Faixas -->
-            <div class="row mt-4">
-                <div class="col-12">
-                    <div class="card">
-                        <div class="card-body">
-                            <h5 class="card-title"><i class="bi bi-info-circle"></i> Faixas de Comissão</h5>
-                            <div class="row g-3 mt-2">
-                                <div class="col-md-6 col-lg-4">
-                                    <div class="d-flex align-items-center">
-                                        <div class="progress-bar bg-danger" style="width: 30px; height: 20px; border-radius: 5px; margin-right: 10px;"></div>
-                                        <span><strong>Até 50%:</strong> 1% de comissão</span>
-                                    </div>
-                                </div>
-                                <div class="col-md-6 col-lg-4">
-                                    <div class="d-flex align-items-center">
-                                        <div class="progress-bar bg-warning" style="width: 30px; height: 20px; border-radius: 5px; margin-right: 10px;"></div>
-                                        <span><strong>51% - 75%:</strong> 2% de comissão</span>
-                                    </div>
-                                </div>
-                                <div class="col-md-6 col-lg-4">
-                                    <div class="d-flex align-items-center">
-                                        <div class="progress-bar bg-info" style="width: 30px; height: 20px; border-radius: 5px; margin-right: 10px;"></div>
-                                        <span><strong>76% - 100%:</strong> 3% de comissão</span>
-                                    </div>
-                                </div>
-                                <div class="col-md-6 col-lg-4">
-                                    <div class="d-flex align-items-center">
-                                        <div class="progress-bar" style="background: linear-gradient(90deg, #43e97b 0%, #38f9d7 100%); width: 30px; height: 20px; border-radius: 5px; margin-right: 10px;"></div>
-                                        <span><strong>101% - 125%:</strong> 4% de comissão</span>
-                                    </div>
-                                </div>
-                                <div class="col-md-6 col-lg-4">
-                                    <div class="d-flex align-items-center">
-                                        <div class="progress-bar bg-success" style="width: 30px; height: 20px; border-radius: 5px; margin-right: 10px;"></div>
-                                        <span><strong>Acima de 125%:</strong> 5% de comissão</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-        </div>
-    </div>
-
-    <!-- Footer -->
-    <footer>
-        <div class="container">
-            <p><i class="bi bi-code-slash"></i> Sistema de Metas e Comissões &copy; 2025 | Desenvolvido com Python/Flask e Bootstrap</p>
-        </div>
-    </footer>
-
-    <!-- Bootstrap JS -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-    
-    <!-- Script customizado para animações -->
-    <script>
-        // Anima as barras de progresso ao carregar a página
-        document.addEventListener('DOMContentLoaded', function() {
-            const progressBars = document.querySelectorAll('.progress-bar');
-            progressBars.forEach(bar => {
-                const width = bar.style.width;
-                bar.style.width = '0';
-                setTimeout(() => {
-                    bar.style.width = width;
-                }, 100);
-            });
-        });
-    </script>
-</body>
-</html>

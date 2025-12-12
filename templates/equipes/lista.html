@@ -17,8 +17,8 @@
 <!-- Cards de Estatísticas -->
 <div class="row g-3 mb-4">
     <div class="col-md-6">
-        <div class="card border-0 shadow-sm" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);">
-            <div class="card-body text-white">
+        <div class="card border-0 shadow-sm bg-gradient-purple text-white">
+            <div class="card-body">
                 <div class="d-flex justify-content-between align-items-center">
                     <div>
                         <p class="mb-1 opacity-75">Equipes Ativas</p>
@@ -30,8 +30,8 @@
         </div>
     </div>
     <div class="col-md-6">
-        <div class="card border-0 shadow-sm" style="background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);">
-            <div class="card-body text-white">
+        <div class="card border-0 shadow-sm bg-gradient-cyan text-white">
+            <div class="card-body">
                 <div class="d-flex justify-content-between align-items-center">
                     <div>
                         <p class="mb-1 opacity-75">Total de Vendedores</p>
@@ -50,8 +50,8 @@
     <div class="col-md-6 col-lg-4">
         <div class="card h-100 shadow-sm hover-shadow">
             <!-- Header -->
-            <div class="card-header" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);">
-                <h5 class="mb-0 text-white">
+            <div class="card-header bg-gradient-purple text-white">
+                <h5 class="mb-0">
                     <i class="bi bi-diagram-3-fill"></i> {{ item.equipe.nome }}
                 </h5>
             </div>
@@ -101,7 +101,7 @@
                             <i class="bi bi-pencil"></i>
                         </a>
                         <form method="POST" action="{{ url_for('deletar_equipe', id=item.equipe.id) }}" 
-                              style="display: inline;"
+                              class="d-inline"
                               onsubmit="return confirm('Tem certeza que deseja desativar esta equipe?');">
                             <button type="submit" class="btn btn-sm btn-outline-danger" title="Desativar">
                                 <i class="bi bi-trash"></i>

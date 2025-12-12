@@ -65,7 +65,7 @@
 <!-- Cards de Estatísticas -->
 <div class="row g-3 mb-4">
     <div class="col-md-3 col-sm-6">
-        <div class="card border-0 shadow-sm" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);">
+        <div class="card border-0 shadow-sm bg-gradient-purple">
             <div class="card-body text-white">
                 <div class="d-flex justify-content-between align-items-center">
                     <div>
@@ -78,7 +78,7 @@
         </div>
     </div>
     <div class="col-md-3 col-sm-6">
-        <div class="card border-0 shadow-sm" style="background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);">
+        <div class="card border-0 shadow-sm bg-gradient-cyan">
             <div class="card-body text-white">
                 <div class="d-flex justify-content-between align-items-center">
                     <div>
@@ -91,7 +91,7 @@
         </div>
     </div>
     <div class="col-md-3 col-sm-6">
-        <div class="card border-0 shadow-sm" style="background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);">
+        <div class="card border-0 shadow-sm bg-gradient-green">
             <div class="card-body text-white">
                 <div class="d-flex justify-content-between align-items-center">
                     <div>
@@ -104,7 +104,7 @@
         </div>
     </div>
     <div class="col-md-3 col-sm-6">
-        <div class="card border-0 shadow-sm" style="background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);">
+        <div class="card border-0 shadow-sm bg-gradient-pink">
             <div class="card-body text-white">
                 <div class="d-flex justify-content-between align-items-center">
                     <div>
@@ -141,7 +141,7 @@
                 <td class="fw-bold text-muted">{{ loop.index }}</td>
                 <td>
                     <div class="d-flex align-items-center gap-2">
-                        <div class="avatar-circle" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);">
+                        <div class="avatar-circle bg-gradient-purple">
                             <i class="bi bi-person text-white"></i>
                         </div>
                         <div>
@@ -160,7 +160,7 @@
                 <td class="text-end d-none d-md-table-cell">
                     <span>R$ {{ "{:,.2f}".format(meta.receita_alcancada) }}</span>
                 </td>
-                <td style="min-width: 180px;">
+                <td class="minw-180px">
                     <div class="mb-1 small">
                         <strong>{{ "{:.1f}".format(meta.percentual_alcance) }}%</strong>
                         {% if meta.percentual_alcance < 50 %}🔴
@@ -169,14 +169,14 @@
                         {% elif meta.percentual_alcance < 125 %}🟢
                         {% else %}🟢✨{% endif %}
                     </div>
-                    <div class="progress" style="height: 8px;">
+                    <div class="progress progress-small">
                         <div class="progress-bar 
                             {% if meta.percentual_alcance >= 125 %}bg-success
                             {% elif meta.percentual_alcance >= 100 %}bg-info
                             {% elif meta.percentual_alcance >= 75 %}bg-warning
                             {% else %}bg-danger{% endif %}"
                             role="progressbar"
-                            style="width: {% if meta.percentual_alcance > 150 %}100{% else %}{{ '{:.1f}'.format(meta.percentual_alcance) }}{% endif %}%">
+                            data-percent="{{ '{:.1f}'.format(meta.percentual_alcance) }}">
                         </div>
                     </div>
                 </td>
@@ -205,7 +205,7 @@
                             <i class="bi bi-pencil"></i>
                         </a>
                         <form method="POST" action="{{ url_for('deletar_meta', id=meta.id) }}" 
-                              style="display: inline;"
+                              class="d-inline"
                               onsubmit="return confirm('Tem certeza que deseja deletar esta meta?');">
                             <button type="submit" class="btn btn-sm btn-outline-danger" title="Deletar">
                                 <i class="bi bi-trash"></i>
@@ -239,40 +239,40 @@
         <div class="row g-2">
             <div class="col-md-4">
                 <div class="d-flex align-items-center gap-2">
-                    <div class="progress flex-grow-1" style="height: 20px;">
-                        <div class="progress-bar bg-danger" style="width: 100%;">🔴 0-50%</div>
+                    <div class="progress flex-grow-1 progress-sm">
+                        <div class="progress-bar bg-danger w-100">🔴 0-50%</div>
                     </div>
                     <span class="text-muted small">1%</span>
                 </div>
             </div>
             <div class="col-md-4">
                 <div class="d-flex align-items-center gap-2">
-                    <div class="progress flex-grow-1" style="height: 20px;">
-                        <div class="progress-bar bg-warning" style="width: 100%;">🟡 51-75%</div>
+                    <div class="progress flex-grow-1 progress-sm">
+                        <div class="progress-bar bg-warning w-100">🟡 51-75%</div>
                     </div>
                     <span class="text-muted small">2%</span>
                 </div>
             </div>
             <div class="col-md-4">
                 <div class="d-flex align-items-center gap-2">
-                    <div class="progress flex-grow-1" style="height: 20px;">
-                        <div class="progress-bar bg-info" style="width: 100%;">🔵 76-100%</div>
+                    <div class="progress flex-grow-1 progress-sm">
+                        <div class="progress-bar bg-info w-100">🔵 76-100%</div>
                     </div>
                     <span class="text-muted small">3%</span>
                 </div>
             </div>
             <div class="col-md-6">
                 <div class="d-flex align-items-center gap-2">
-                    <div class="progress flex-grow-1" style="height: 20px;">
-                        <div class="progress-bar bg-success" style="width: 100%;">🟢 101-125%</div>
+                    <div class="progress flex-grow-1 progress-sm">
+                        <div class="progress-bar bg-success w-100">🟢 101-125%</div>
                     </div>
                     <span class="text-muted small">4%</span>
                 </div>
             </div>
             <div class="col-md-6">
                 <div class="d-flex align-items-center gap-2">
-                    <div class="progress flex-grow-1" style="height: 20px;">
-                        <div class="progress-bar bg-success" style="width: 100%;">🟢✨ >125%</div>
+                    <div class="progress flex-grow-1 progress-sm">
+                        <div class="progress-bar bg-success w-100">🟢✨ >125%</div>
                     </div>
                     <span class="text-muted small">5%</span>
                 </div>
