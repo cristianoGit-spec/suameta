@@ -22,48 +22,107 @@
 <div class="row g-4 mb-5">
     <!-- Card Total de Vendedores -->
     <div class="col-lg-3 col-md-6">
-        <div class="card stats-card" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);">
-            <div class="card-body text-center">
-                <i class="bi bi-people-fill stats-icon"></i>
-                <h5 class="stats-title">Total de Vendedores</h5>
-                <p class="stats-value">{{ resumo_global.total_vendedores }}</p>
+        <div class="card stats-card border-0 shadow-sm hover-lift" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); overflow: hidden;">
+            <div class="card-body p-4 position-relative">
+                <div class="d-flex justify-content-between align-items-start mb-3">
+                    <div>
+                        <h6 class="text-white-50 mb-2 fw-normal" style="font-size: 0.875rem;">Total de Vendedores</h6>
+                        <h2 class="text-white fw-bold mb-0" style="font-size: 2.5rem;">{{ resumo_global.total_vendedores }}</h2>
+                    </div>
+                    <div class="icon-box" style="background: rgba(255,255,255,0.2); width: 56px; height: 56px; border-radius: 12px; display: flex; align-items: center; justify-content: center;">
+                        <i class="bi bi-people-fill text-white" style="font-size: 1.75rem;"></i>
+                    </div>
+                </div>
+                <div class="d-flex align-items-center text-white-50">
+                    <i class="bi bi-graph-up-arrow me-2"></i>
+                    <small>Equipe ativa</small>
+                </div>
             </div>
         </div>
     </div>
     
     <!-- Card Receita Total -->
     <div class="col-lg-3 col-md-6">
-        <div class="card stats-card card-receita">
-            <div class="card-body text-center">
-                <i class="bi bi-cash-stack stats-icon"></i>
-                <h5 class="stats-title">Receita Total</h5>
-                <p class="stats-value">{{ resumo_global.total_receita_formatada }}</p>
+        <div class="card stats-card border-0 shadow-sm hover-lift" style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%); overflow: hidden;">
+            <div class="card-body p-4 position-relative">
+                <div class="d-flex justify-content-between align-items-start mb-3">
+                    <div>
+                        <h6 class="text-white-50 mb-2 fw-normal" style="font-size: 0.875rem;">Receita Total</h6>
+                        <h2 class="text-white fw-bold mb-0" style="font-size: 2rem;">{{ resumo_global.total_receita_formatada }}</h2>
+                    </div>
+                    <div class="icon-box" style="background: rgba(255,255,255,0.2); width: 56px; height: 56px; border-radius: 12px; display: flex; align-items: center; justify-content: center;">
+                        <i class="bi bi-cash-stack text-white" style="font-size: 1.75rem;"></i>
+                    </div>
+                </div>
+                <div class="d-flex align-items-center text-white-50">
+                    <i class="bi bi-calendar-check me-2"></i>
+                    <small>{{ resumo_global.mes }}/{{ resumo_global.ano }}</small>
+                </div>
             </div>
         </div>
     </div>
     
     <!-- Card Meta Total -->
     <div class="col-lg-3 col-md-6">
-        <div class="card stats-card card-meta">
-            <div class="card-body text-center">
-                <i class="bi bi-bullseye stats-icon"></i>
-                <h5 class="stats-title">Meta Total</h5>
-                <p class="stats-value">{{ resumo_global.total_meta_formatada }}</p>
+        <div class="card stats-card border-0 shadow-sm hover-lift" style="background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%); overflow: hidden;">
+            <div class="card-body p-4 position-relative">
+                <div class="d-flex justify-content-between align-items-start mb-3">
+                    <div>
+                        <h6 class="text-white-50 mb-2 fw-normal" style="font-size: 0.875rem;">Meta Total</h6>
+                        <h2 class="text-white fw-bold mb-0" style="font-size: 2rem;">{{ resumo_global.total_meta_formatada }}</h2>
+                    </div>
+                    <div class="icon-box" style="background: rgba(255,255,255,0.2); width: 56px; height: 56px; border-radius: 12px; display: flex; align-items: center; justify-content: center;">
+                        <i class="bi bi-bullseye text-white" style="font-size: 1.75rem;"></i>
+                    </div>
+                </div>
+                <div class="d-flex align-items-center text-white-50">
+                    <i class="bi bi-flag me-2"></i>
+                    <small>Objetivo do mês</small>
+                </div>
             </div>
         </div>
     </div>
     
     <!-- Card Comissão Total -->
     <div class="col-lg-3 col-md-6">
-        <div class="card stats-card card-comissao">
-            <div class="card-body text-center">
-                <i class="bi bi-wallet2 stats-icon"></i>
-                <h5 class="stats-title">Comissão Total</h5>
-                <p class="stats-value">{{ resumo_global.total_comissao_formatada }}</p>
+        <div class="card stats-card border-0 shadow-sm hover-lift" style="background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%); overflow: hidden;">
+            <div class="card-body p-4 position-relative">
+                <div class="d-flex justify-content-between align-items-start mb-3">
+                    <div>
+                        <h6 class="text-white-50 mb-2 fw-normal" style="font-size: 0.875rem;">Comissão Total</h6>
+                        <h2 class="text-white fw-bold mb-0" style="font-size: 2rem;">{{ resumo_global.total_comissao_formatada }}</h2>
+                    </div>
+                    <div class="icon-box" style="background: rgba(255,255,255,0.2); width: 56px; height: 56px; border-radius: 12px; display: flex; align-items: center; justify-content: center;">
+                        <i class="bi bi-wallet2 text-white" style="font-size: 1.75rem;"></i>
+                    </div>
+                </div>
+                <div class="d-flex align-items-center text-white-50">
+                    <i class="bi bi-trophy me-2"></i>
+                    <small>Ganhos da equipe</small>
+                </div>
             </div>
         </div>
     </div>
 </div>
+
+<style>
+.hover-lift {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.hover-lift:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 24px rgba(0,0,0,0.15) !important;
+}
+
+.icon-box {
+    transition: transform 0.3s ease;
+}
+
+.hover-lift:hover .icon-box {
+    transform: rotate(10deg) scale(1.1);
+}
+</style>
 
 <!-- Card Alcance da Equipe -->
 <div class="card mb-5" style="border: none; box-shadow: 0 4px 6px rgba(0,0,0,0.1);">

@@ -1,53 +1,85 @@
-# 🎯 Sistema de Gestão de Metas e Comissões - VERSÃO COMPLETA
+# 🎯 Sistema de Gestão de Metas e Comissões
 
-Sistema profissional e completo para gerenciamento de metas de vendas, cálculo automático de comissões e acompanhamento de desempenho, desenvolvido com Python/Flask, SQLAlchemy e Bootstrap 5.
+Sistema profissional completo para gerenciamento de metas de vendas, cálculo automático de comissões e acompanhamento de desempenho em tempo real.
+
+[![Deploy no Render](https://img.shields.io/badge/Deploy-Render-46E3B7?style=for-the-badge&logo=render)](https://render.com)
+[![Deploy no Railway](https://img.shields.io/badge/Deploy-Railway-0B0D0E?style=for-the-badge&logo=railway)](https://railway.app)
+[![Python](https://img.shields.io/badge/Python-3.11-3776AB?style=for-the-badge&logo=python)](https://python.org)
+[![Flask](https://img.shields.io/badge/Flask-3.0-000000?style=for-the-badge&logo=flask)](https://flask.palletsprojects.com)
+[![PostgreSQL](https://img.shields.io/badge/PostgreSQL-Ready-336791?style=for-the-badge&logo=postgresql)](https://postgresql.org)
+
+---
+
+## 🚀 Deploy em Produção
+
+### ⚡ Render.com (RECOMENDADO - Gratuito)
+```bash
+# 1. Fork este repositório
+# 2. Acesse https://render.com e conecte o GitHub
+# 3. Crie um Web Service apontando para este repo
+# 4. Adicione PostgreSQL (Free tier)
+# 5. Deploy automático!
+```
+📖 [Guia completo de deploy](DEPLOY.md)
+
+### 🎨 Demonstração Online
+- 🌐 **URL**: https://sistema-metas.onrender.com *(após deploy)*
+- 👤 **Usuário**: admin@metas.com
+- 🔑 **Senha**: admin123
+
+---
 
 ## ✨ Funcionalidades Principais
 
 ### 🔐 Sistema de Autenticação
-- ✅ Login e registro de usuários
-- ✅ Controle de acesso por perfil (Admin, Supervisor, Usuário)
-- ✅ Segurança com hash de senhas
-- ✅ Sessões persistentes
+- Login e registro com validação de email
+- Controle de acesso por perfil (Admin, Supervisor, Usuário)
+- Segurança com hash bcrypt de senhas
+- Sessões persistentes com Flask-Login
 
 ### 👥 Gerenciamento de Vendedores
-- ✅ Cadastro completo de vendedores (nome, email, telefone, CPF)
-- ✅ Vinculação com supervisores
-- ✅ Vinculação com equipes
-- ✅ Ativação/desativação de vendedores
-- ✅ Histórico de performance
+- Cadastro completo (nome, email, telefone, CPF)
+- Vinculação com supervisores e equipes
+- Ativação/desativação de vendedores
+- Histórico completo de performance
 
 ### 🏢 Gerenciamento de Equipes
-- ✅ Criação e gestão de equipes de vendas
-- ✅ Atribuição de supervisor por equipe
-- ✅ Visualização detalhada da performance da equipe
-- ✅ Estatísticas consolidadas por equipe
-- ✅ Acompanhamento de metas por equipe
+- Criação e gestão de equipes de vendas
+- Atribuição de supervisor por equipe
+- Performance consolidada da equipe
+- Acompanhamento de metas coletivas
 
 ### 📊 Gerenciamento de Metas
-- ✅ Criação de metas mensais individualizadas
-- ✅ Acompanhamento de receita alcançada
-- ✅ Cálculo automático de comissões
-- ✅ Status de pagamento (Pendente, Aprovado, Pago)
-- ✅ Filtros por período (mês/ano)
-- ✅ Observações e notas em cada meta
+- Metas mensais individualizadas
+- Acompanhamento de receita em tempo real
+- **Cálculo automático de comissões**
+- Status de pagamento (Pendente, Aprovado, Pago)
+- Filtros por período (mês/ano)
 
 ### 📈 Dashboard Interativo
-- ✅ Visualização em tempo real das métricas da equipe
-- ✅ Ranking de vendedores por desempenho
-- ✅ Cards de estatísticas (Receita, Meta, Alcance, Comissões)
-- ✅ Barras de progresso coloridas por faixa
-- ✅ Interface responsiva para todos os dispositivos
+- **Cards modernos com gradientes vibrantes**
+- Ranking de vendedores em tempo real
+- Estatísticas consolidadas (Receita, Meta, Comissões)
+- Barras de progresso coloridas por faixa
+- **100% responsivo** (desktop, tablet, mobile)
+
+### 📄 Exportação de Relatórios
+- **Exportar Dashboard em PDF**
+- **Exportar Metas do período em PDF**
+- Relatórios formatados com logo e estatísticas
+- Tabelas profissionais com totalizadores
 
 ### 💾 Banco de Dados
-- ✅ SQLite para desenvolvimento local
-- ✅ PostgreSQL pronto para produção (nuvem)
-- ✅ Migrations automáticas
-- ✅ Relacionamentos entre tabelas
+- SQLite para desenvolvimento local
+- **PostgreSQL pronto para produção**
+- Migrations automáticas com SQLAlchemy
+- Pool de conexões otimizado
+
+---
 
 ## 🎨 Faixas de Comissão
 
-O sistema calcula a comissão baseado no percentual de alcance da meta individual:
+O sistema calcula comissões baseado no percentual de alcance da meta individual:
 
 | Alcance da Meta | Taxa de Comissão | Cor na Interface |
 |-----------------|------------------|------------------|
