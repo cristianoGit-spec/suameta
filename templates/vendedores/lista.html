@@ -1,0 +1,149 @@
+{% extends "base.html" %}
+
+{% block title %}Vendedores - Sistema de Metas{% endblock %}
+
+{% block content %}
+<!-- Cabeçalho -->
+<div class="d-flex justify-content-between align-items-center mb-4">
+    <h1 class="page-title mb-0">
+        <i class="bi bi-people-fill"></i> Gerenciamento de Vendedores
+    </h1>
+    <a href="{{ url_for('novo_vendedor') }}" class="btn btn-primary">
+        <i class="bi bi-plus-circle"></i> Novo Vendedor
+    </a>
+</div>
+
+<!-- Cards de Estatísticas -->
+<div class="row g-4 mb-4">
+    <div class="col-md-4">
+        <div class="card stats-card" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);">
+            <div class="card-body text-center">
+                <i class="bi bi-people-fill stats-icon"></i>
+                <h5 class="stats-title">Total de Vendedores</h5>
+                <p class="stats-value">{{ vendedores|length }}</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="card stats-card" style="background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);">
+            <div class="card-body text-center">
+                <i class="bi bi-person-badge stats-icon"></i>
+                <h5 class="stats-title">Com Supervisor</h5>
+                <p class="stats-value">{{ vendedores|selectattr('supervisor_id')|list|length }}</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="card stats-card" style="background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);">
+            <div class="card-body text-center">
+                <i class="bi bi-diagram-3-fill stats-icon"></i>
+                <h5 class="stats-title">Em Equipes</h5>
+                <p class="stats-value">{{ vendedores|selectattr('equipe_id')|list|length }}</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Tabela de Vendedores -->
+{% if vendedores %}
+<div class="card">
+    <div class="card-header">
+        <h5 class="mb-0"><i class="bi bi-table"></i> Lista de Vendedores Ativos</h5>
+    </div>
+    <div class="card-body p-0">
+        <div class="table-responsive">
+            <table class="table table-hover mb-0">
+                <thead>
+                    <tr>
+                        <th style="width: 50px;">#</th>
+                        <th>Nome</th>
+                        <th>Email</th>
+                        <th class="d-none d-md-table-cell">Telefone</th>
+                        <th class="d-none d-lg-table-cell">CPF</th>
+                        <th>Equipe</th>
+                        <th class="d-none d-md-table-cell">Supervisor</th>
+                        <th class="text-center">Status</th>
+                        <th class="text-center" style="width: 120px;">Ações</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for vendedor in vendedores %}
+                    <tr>
+                        <td class="text-muted">{{ loop.index }}</td>
+                        <td>
+                            <div class="d-flex align-items-center">
+                                <div class="avatar-circle me-2">
+                                    <i class="bi bi-person-fill"></i>
+                                </div>
+                                <strong>{{ vendedor.nome }}</strong>
+                            </div>
+                        </td>
+                        <td>
+                            <i class="bi bi-envelope text-muted"></i> 
+                            <span class="text-muted">{{ vendedor.email }}</span>
+                        </td>
+                        <td class="d-none d-md-table-cell">
+                            {% if vendedor.telefone %}
+                                <i class="bi bi-telephone text-muted"></i> {{ vendedor.telefone }}
+                            {% else %}
+                                <span class="text-muted">-</span>
+                            {% endif %}
+                        </td>
+                        <td class="d-none d-lg-table-cell">
+                            {{ vendedor.cpf or '-' }}
+                        </td>
+                        <td>
+                            {% if vendedor.equipe_id %}
+                                <span class="badge bg-info">
+                                    <i class="bi bi-diagram-3-fill"></i> {{ vendedor.equipe_obj.nome }}
+                                </span>
+                            {% else %}
+                                <span class="badge bg-secondary">Sem equipe</span>
+                            {% endif %}
+                        </td>
+                        <td class="d-none d-md-table-cell">
+                            {% if vendedor.supervisor_nome %}
+                                <i class="bi bi-person-badge text-primary"></i> {{ vendedor.supervisor_nome }}
+                            {% else %}
+                                <span class="text-muted">-</span>
+                            {% endif %}
+                        </td>
+                        <td class="text-center">
+                            <span class="badge bg-success">
+                                <i class="bi bi-check-circle-fill"></i> Ativo
+                            </span>
+                        </td>
+                        <td class="text-center">
+                            <div class="btn-group btn-group-sm" role="group">
+                                <a href="{{ url_for('editar_vendedor', id=vendedor.id) }}" 
+                                   class="btn btn-warning" 
+                                   title="Editar">
+                                    <i class="bi bi-pencil-square"></i>
+                                </a>
+                                <form method="POST" action="{{ url_for('deletar_vendedor', id=vendedor.id) }}" 
+                                      style="display: inline;"
+                                      onsubmit="return confirm('Tem certeza que deseja desativar {{ vendedor.nome }}?');">
+                                    <button type="submit" class="btn btn-danger" title="Desativar">
+                                        <i class="bi bi-trash"></i>
+                                    </button>
+                                </form>
+                            </div>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+{% else %}
+<div class="empty-state">
+    <i class="bi bi-person-x"></i>
+    <h3>Nenhum vendedor cadastrado</h3>
+    <p class="text-muted">Clique no botão "Novo Vendedor" para começar</p>
+    <a href="{{ url_for('novo_vendedor') }}" class="btn btn-primary mt-3">
+        <i class="bi bi-plus-circle"></i> Cadastrar Primeiro Vendedor
+    </a>
+</div>
+{% endif %}
+{% endblock %}

@@ -1,0 +1,251 @@
+{% extends "base.html" %}
+
+{% block title %}{% if meta %}Editar{% else %}Nova{% endif %} Meta - Sistema de Metas{% endblock %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-lg-10">
+        <!-- Cabeçalho -->
+        <div class="d-flex justify-content-between align-items-center mb-4">
+            <h1 class="page-title mb-0">
+                <i class="bi bi-bullseye"></i> {% if meta %}Editar Meta{% else %}Nova Meta{% endif %}
+            </h1>
+        </div>
+
+        <div class="card">
+            <div class="card-body p-4">
+                <form method="POST" id="metaForm">
+                    {{ form.hidden_tag() }}
+                    
+                    <!-- Vendedor -->
+                    <!-- Vendedor -->
+                    <div class="row">
+                        <div class="col-12 mb-4">
+                            <label class="form-label">
+                                <i class="bi bi-person-circle"></i> {{ form.vendedor_id.label.text }}
+                                <span class="text-danger">*</span>
+                            </label>
+                            {{ form.vendedor_id(class="form-select form-select-lg") }}
+                            {% if form.vendedor_id.errors %}
+                                <div class="invalid-feedback d-block">
+                                    {% for error in form.vendedor_id.errors %}<div>{{ error }}</div>{% endfor %}
+                                </div>
+                            {% endif %}
+                            <small class="form-text text-muted">Selecione o vendedor para esta meta</small>
+                        </div>
+                    </div>
+                    
+                    <!-- Período -->
+                    <div class="row">
+                        <div class="col-md-6 mb-4">
+                            <label class="form-label">
+                                <i class="bi bi-calendar-month"></i> {{ form.mes.label.text }}
+                                <span class="text-danger">*</span>
+                            </label>
+                            {{ form.mes(class="form-select") }}
+                            {% if form.mes.errors %}
+                                <div class="invalid-feedback d-block">
+                                    {% for error in form.mes.errors %}<div>{{ error }}</div>{% endfor %}
+                                </div>
+                            {% endif %}
+                        </div>
+                        
+                        <div class="col-md-6 mb-4">
+                            <label class="form-label">
+                                <i class="bi bi-calendar"></i> {{ form.ano.label.text }}
+                                <span class="text-danger">*</span>
+                            </label>
+                            {{ form.ano(class="form-control", placeholder="Ex: 2024") }}
+                            {% if form.ano.errors %}
+                                <div class="invalid-feedback d-block">
+                                    {% for error in form.ano.errors %}<div>{{ error }}</div>{% endfor %}
+                                </div>
+                            {% endif %}
+                        </div>
+                    </div>
+                    
+                    <!-- Valores -->
+                    <div class="row">
+                        <div class="col-md-6 mb-4">
+                            <label class="form-label">
+                                <i class="bi bi-bullseye"></i> {{ form.valor_meta.label.text }}
+                                <span class="text-danger">*</span>
+                            </label>
+                            <div class="input-group input-group-lg">
+                                <span class="input-group-text"><i class="bi bi-currency-dollar"></i></span>
+                                {{ form.valor_meta(class="form-control", placeholder="0,00", id="valorMeta") }}
+                            </div>
+                            {% if form.valor_meta.errors %}
+                                <div class="invalid-feedback d-block">
+                                    {% for error in form.valor_meta.errors %}<div>{{ error }}</div>{% endfor %}
+                                </div>
+                            {% endif %}
+                            <small class="form-text text-muted">Valor objetivo para o período</small>
+                        </div>
+                        
+                        <div class="col-md-6 mb-4">
+                            <label class="form-label">
+                                <i class="bi bi-cash-stack"></i> {{ form.receita_alcancada.label.text }}
+                            </label>
+                            <div class="input-group input-group-lg">
+                                <span class="input-group-text"><i class="bi bi-currency-dollar"></i></span>
+                                {{ form.receita_alcancada(class="form-control", placeholder="0,00", id="receitaAlcancada") }}
+                            </div>
+                            {% if form.receita_alcancada.errors %}
+                                <div class="invalid-feedback d-block">
+                                    {% for error in form.receita_alcancada.errors %}<div>{{ error }}</div>{% endfor %}
+                                </div>
+                            {% endif %}
+                            <small class="form-text text-muted">Receita já alcançada (opcional)</small>
+                        </div>
+                    </div>
+                    
+                    <!-- Status e Observações -->
+                    <div class="row">
+                        <div class="col-md-6 mb-4">
+                            <label class="form-label">
+                                <i class="bi bi-clipboard-check"></i> {{ form.status_comissao.label.text }}
+                                <span class="text-danger">*</span>
+                            </label>
+                            {{ form.status_comissao(class="form-select") }}
+                            {% if form.status_comissao.errors %}
+                                <div class="invalid-feedback d-block">
+                                    {% for error in form.status_comissao.errors %}<div>{{ error }}</div>{% endfor %}
+                                </div>
+                            {% endif %}
+                        </div>
+                        
+                        <div class="col-md-12 mb-4">
+                            <label class="form-label">
+                                <i class="bi bi-chat-left-text"></i> {{ form.observacoes.label.text }}
+                            </label>
+                            {{ form.observacoes(class="form-control", rows="3", placeholder="Observações sobre esta meta (opcional)...") }}
+                            {% if form.observacoes.errors %}
+                                <div class="invalid-feedback d-block">
+                                    {% for error in form.observacoes.errors %}<div>{{ error }}</div>{% endfor %}
+                                </div>
+                            {% endif %}
+                        </div>
+                    </div>
+                    
+                    <!-- Preview da Comissão -->
+                    <div class="card mb-4 border-success" id="commissionPreview" style="display: none;">
+                        <div class="card-body text-center">
+                            <p class="text-muted mb-2">
+                                <i class="bi bi-calculator"></i> Comissão Calculada
+                            </p>
+                            <h2 class="text-success mb-2" id="commissionValue">R$ 0,00</h2>
+                            <div class="progress mb-2" style="height: 30px;">
+                                <div class="progress-bar" id="progressBar" role="progressbar" style="width: 0%">
+                                    <span id="percentualAlcance">0</span>%
+                                </div>
+                            </div>
+                            <p class="mb-0">
+                                <span class="badge bg-primary" id="faixaBadge">Faixa 1</span>
+                                Taxa de <strong><span id="taxaComissao">0</span>%</strong> sobre a receita alcançada
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <!-- Info Faixas -->
+                    <div class="alert alert-info">
+                        <h6 class="alert-heading">
+                            <i class="bi bi-info-circle"></i> Faixas de Comissão
+                        </h6>
+                        <div class="row g-2 small">
+                            <div class="col-md-6 col-lg-4">🔴 <strong>0-50%:</strong> 1% de comissão</div>
+                            <div class="col-md-6 col-lg-4">🟡 <strong>51-75%:</strong> 2% de comissão</div>
+                            <div class="col-md-6 col-lg-4">🔵 <strong>76-100%:</strong> 3% de comissão</div>
+                            <div class="col-md-6 col-lg-4">🟢 <strong>101-125%:</strong> 4% de comissão</div>
+                            <div class="col-md-6 col-lg-4">🟢✨ <strong>>125%:</strong> 5% de comissão</div>
+                        </div>
+                    </div>
+                    
+                    <!-- Botões -->
+                    <div class="d-flex justify-content-between gap-2">
+                        <a href="{{ url_for('lista_metas') }}" class="btn btn-outline-secondary btn-lg">
+                            <i class="bi bi-x-circle"></i> Cancelar
+                        </a>
+                        <button type="submit" class="btn btn-primary btn-lg">
+                            <i class="bi bi-check-circle"></i> Salvar Meta
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+
+{% block extra_js %}
+<script>
+// Calcula comissão em tempo real
+function calcularComissao() {
+    const valorMeta = parseFloat(document.getElementById('valorMeta').value) || 0;
+    const receitaAlcancada = parseFloat(document.getElementById('receitaAlcancada').value) || 0;
+    
+    if (valorMeta > 0 && receitaAlcancada >= 0) {
+        const percentual = (receitaAlcancada / valorMeta) * 100;
+        let taxaComissao = 0;
+        let faixa = '';
+        let corBarra = '';
+        
+        // Determina faixa, taxa e cor
+        if (percentual <= 50) {
+            taxaComissao = 1;
+            faixa = '🔴 Faixa 1';
+            corBarra = 'bg-danger';
+        } else if (percentual <= 75) {
+            taxaComissao = 2;
+            faixa = '🟡 Faixa 2';
+            corBarra = 'bg-warning';
+        } else if (percentual <= 100) {
+            taxaComissao = 3;
+            faixa = '🔵 Faixa 3';
+            corBarra = 'bg-info';
+        } else if (percentual <= 125) {
+            taxaComissao = 4;
+            faixa = '🟢 Faixa 4';
+            corBarra = 'bg-success';
+        } else {
+            taxaComissao = 5;
+            faixa = '🟢✨ Faixa 5';
+            corBarra = 'bg-success';
+        }
+        
+        const comissao = receitaAlcancada * (taxaComissao / 100);
+        const percentualDisplay = Math.min(percentual, 150); // Limita visualização
+        
+        // Atualiza preview
+        document.getElementById('commissionPreview').style.display = 'block';
+        document.getElementById('commissionValue').textContent = 
+            'R$ ' + comissao.toLocaleString('pt-BR', {minimumFractionDigits: 2, maximumFractionDigits: 2});
+        document.getElementById('percentualAlcance').textContent = percentual.toFixed(1);
+        document.getElementById('taxaComissao').textContent = taxaComissao;
+        document.getElementById('faixaBadge').textContent = faixa;
+        
+        const progressBar = document.getElementById('progressBar');
+        progressBar.className = 'progress-bar ' + corBarra;
+        progressBar.style.width = percentualDisplay + '%';
+    } else {
+        document.getElementById('commissionPreview').style.display = 'none';
+    }
+}
+
+// Eventos
+document.getElementById('valorMeta').addEventListener('input', calcularComissao);
+document.getElementById('receitaAlcancada').addEventListener('input', calcularComissao);
+document.addEventListener('DOMContentLoaded', calcularComissao);
+
+// Validação
+document.getElementById('metaForm').addEventListener('submit', function(e) {
+    const valorMeta = parseFloat(document.getElementById('valorMeta').value) || 0;
+    if (valorMeta <= 0) {
+        e.preventDefault();
+        alert('O valor da meta deve ser maior que zero!');
+        document.getElementById('valorMeta').focus();
+    }
+});
+</script>
+{% endblock %}

@@ -1,0 +1,90 @@
+{% extends "base.html" %}
+
+{% block title %}{% if equipe %}Editar{% else %}Nova{% endif %} Equipe - Sistema de Metas{% endblock %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-lg-8">
+        <!-- Cabeçalho -->
+        <div class="d-flex justify-content-between align-items-center mb-4">
+            <h1 class="page-title mb-0">
+                <i class="bi bi-people-fill"></i> {% if equipe %}Editar Equipe{% else %}Nova Equipe{% endif %}
+            </h1>
+        </div>
+
+        <div class="card">
+            <div class="card-body p-4">
+                <form method="POST">
+                    {{ form.hidden_tag() }}
+                    
+                    <!-- Nome da Equipe -->
+                    <div class="mb-4">
+                        <label class="form-label">
+                            <i class="bi bi-diagram-3-fill"></i> {{ form.nome.label.text }}
+                            <span class="text-danger">*</span>
+                        </label>
+                        {{ form.nome(class="form-control form-control-lg", placeholder="Ex: Equipe Norte, Equipe Premium, etc.") }}
+                        {% if form.nome.errors %}
+                            <div class="invalid-feedback d-block">
+                                {% for error in form.nome.errors %}<div>{{ error }}</div>{% endfor %}
+                            </div>
+                        {% endif %}
+                        <small class="form-text text-muted">Nome identificador da equipe</small>
+                    </div>
+                    
+                    <!-- Supervisor -->
+                    <div class="mb-4">
+                        <label class="form-label">
+                            <i class="bi bi-person-check"></i> {{ form.supervisor_id.label.text }}
+                            <span class="text-danger">*</span>
+                        </label>
+                        {{ form.supervisor_id(class="form-select form-select-lg") }}
+                        {% if form.supervisor_id.errors %}
+                            <div class="invalid-feedback d-block">
+                                {% for error in form.supervisor_id.errors %}<div>{{ error }}</div>{% endfor %}
+                            </div>
+                        {% endif %}
+                        <small class="form-text text-muted">Responsável por gerenciar esta equipe</small>
+                    </div>
+                    
+                    <!-- Descrição -->
+                    <div class="mb-4">
+                        <label class="form-label">
+                            <i class="bi bi-card-text"></i> {{ form.descricao.label.text }}
+                        </label>
+                        {{ form.descricao(class="form-control", rows="4", placeholder="Descreva os objetivos, características e responsabilidades desta equipe...") }}
+                        {% if form.descricao.errors %}
+                            <div class="invalid-feedback d-block">
+                                {% for error in form.descricao.errors %}<div>{{ error }}</div>{% endfor %}
+                            </div>
+                        {% endif %}
+                        <small class="form-text text-muted">Opcional - Informações adicionais sobre a equipe</small>
+                    </div>
+                    
+                    <!-- Info Box -->
+                    <div class="alert alert-info">
+                        <h6 class="alert-heading">
+                            <i class="bi bi-info-circle"></i> Sobre Equipes
+                        </h6>
+                        <p class="mb-0 small">
+                            O supervisor será responsável por gerenciar os vendedores desta equipe 
+                            e acompanhar suas metas e resultados. Após criar a equipe, você poderá 
+                            associar vendedores a ela através do cadastro de vendedores.
+                        </p>
+                    </div>
+                    
+                    <!-- Botões -->
+                    <div class="d-flex justify-content-between gap-2 mt-4">
+                        <a href="{{ url_for('lista_equipes') }}" class="btn btn-outline-secondary btn-lg">
+                            <i class="bi bi-x-circle"></i> Cancelar
+                        </a>
+                        <button type="submit" class="btn btn-primary btn-lg">
+                            <i class="bi bi-check-circle"></i> Salvar Equipe
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
