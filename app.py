@@ -574,21 +574,42 @@ def create_admin():
     print('   Senha: admin123')
 
 
-if __name__ == '__main__':
-    with app.app_context():
+# Inicialização automática do banco de dados
+with app.app_context():
+    try:
         db.create_all()
-        print("\n" + "="*70)
-        print("🚀 SISTEMA DE GESTÃO DE METAS E COMISSÕES - VERSÃO COMPLETA")
-        print("="*70)
-        print("\n✨ Novos Recursos:")
-        print("   🔐 Sistema de autenticação (Login/Registro)")
-        print("   💾 Banco de dados SQLite/PostgreSQL")
-        print("   👥 Gerenciamento de vendedores")
-        print("   📊 Gerenciamento de metas")
-        print("   🎯 Cálculo automático de comissões")
-        print("\n📊 Servidor iniciado com sucesso!")
-        print("🌐 Acesse: http://127.0.0.1:5000/login")
-        print("⌨️  Pressione CTRL+C para parar o servidor\n")
-        print("="*70 + "\n")
+        print("✅ Tabelas do banco de dados criadas/verificadas!")
+        
+        # Criar usuário admin se não existir
+        from models import Usuario
+        admin = Usuario.query.filter_by(email='admin@suameta.com').first()
+        if not admin:
+            admin = Usuario(
+                nome='Administrador',
+                email='admin@suameta.com',
+                cargo='admin',
+                ativo=True
+            )
+            admin.set_senha('admin123')
+            db.session.add(admin)
+            db.session.commit()
+            print("✅ Usuário admin criado: admin@suameta.com / admin123")
+    except Exception as e:
+        print(f"⚠️  Aviso na inicialização do BD: {e}")
+
+if __name__ == '__main__':
+    print("\n" + "="*70)
+    print("🚀 SISTEMA DE GESTÃO DE METAS E COMISSÕES - VERSÃO COMPLETA")
+    print("="*70)
+    print("\n✨ Novos Recursos:")
+    print("   🔐 Sistema de autenticação (Login/Registro)")
+    print("   💾 Banco de dados SQLite/PostgreSQL")
+    print("   👥 Gerenciamento de vendedores")
+    print("   📊 Gerenciamento de metas")
+    print("   🎯 Cálculo automático de comissões")
+    print("\n📊 Servidor iniciado com sucesso!")
+    print("🌐 Acesse: http://127.0.0.1:5000/login")
+    print("⌨️  Pressione CTRL+C para parar o servidor\n")
+    print("="*70 + "\n")
     
     app.run(debug=True, port=5001)
