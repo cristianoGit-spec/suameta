@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# Script de inicialização para Railway
+# Script de inicialização para Railway/Render
 echo "🚀 Iniciando Sistema de Metas..."
 
 # Verificar se existe banco de dados
@@ -11,13 +11,8 @@ else
     echo "✅ Conectando ao PostgreSQL..."
 fi
 
-# Criar tabelas se não existirem
-python -c "
-from app import db, app
-with app.app_context():
-    db.create_all()
-    print('✅ Banco de dados inicializado!')
-"
+# Inicializar banco de dados
+python init_db.py
 
 # Iniciar aplicação com gunicorn
 echo "🌐 Iniciando servidor web..."

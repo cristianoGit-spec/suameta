@@ -11,7 +11,7 @@ class Config:
     # Configuração do banco de dados
     database_url = os.environ.get('DATABASE_URL')
     
-    # Fix para Heroku/Render: postgres:// -> postgresql://
+    # Fix para Heroku/Render/Railway: postgres:// -> postgresql://
     if database_url and database_url.startswith('postgres://'):
         database_url = database_url.replace('postgres://', 'postgresql://', 1)
     
@@ -20,8 +20,13 @@ class Config:
     # Desabilita rastreamento de modificações (economiza memória)
     SQLALCHEMY_TRACK_MODIFICATIONS = False
     SQLALCHEMY_ENGINE_OPTIONS = {
-        'pool_pre_ping': True,  # Verifica conexão antes de usar
-        'pool_recycle': 300,    # Recicla conexões a cada 5 minutos
+        'pool_pre_ping': True,      # Verifica conexão antes de usar
+        'pool_recycle': 300,        # Recicla conexões a cada 5 minutos
+        'pool_size': 10,            # Tamanho do pool de conexões
+        'max_overflow': 20,         # Conexões extras permitidas
+        'connect_args': {
+            'sslmode': 'prefer'     # SSL para PostgreSQL em produção
+        } if database_url and 'postgresql' in database_url else {}
     }
     
     # Configurações de sessão
